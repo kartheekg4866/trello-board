@@ -1,0 +1,14 @@
+<div class="boards-wrapper">
+  <h2>Boards</h2>
+  <div id="boards">
+    <a href="javascript:void(0);" class="board add-board" (click)="addBoard()">
+      <span class="title">Create a new board...</span>
+    </a>
+    <a class="board" *ngFor="let board of listOfBoards" [routerLink]="['/b', board._id]">
+      <span class="title">{{board?.title}}</span>
+      <button type="button" class="close" aria-label="Close"  (click)="deleteBoard(board)">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </a>
+  </div>
+</div>

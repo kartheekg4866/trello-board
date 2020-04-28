@@ -4,6 +4,7 @@
         <input [style.display]="editingColumn ?'' : 'none' " (blur)="updateColumnOnBlur()"
             (keyup)="addColumnOnEnter($event)" id="edit-column" [(ngModel)]="currentTitle" />
     </div>
+  <div class="container">
     <div class="add-card-div" (click)="enableAddCard()">
         <span [style.display]="addingCard ? 'none' : ''" >
             Add a card...
@@ -16,4 +17,5 @@
                 <app-card [card]="card"></app-card>
         </li>
     </ul>
+  </div>
 </div>

@@ -4,7 +4,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { ColumnService } from './column.service';
-import { ColumnTypes, AddColumnSuccess, GetColumns, GetColumnsSuccess, UpdateColumnSuccess } from './../board/board.actions';
+import { ColumnTypes, AddColumnSuccess, GetColumns, GetColumnsSuccess, UpdateColumnSuccess, RemoveColumnSuccess } from './../board/board.actions';
 @Injectable()
 export class ColumnEffects {
 
@@ -32,6 +32,19 @@ export class ColumnEffects {
                 map((resp: any) => {
                     // this.store.dispatch(new GetColumns(resp.boardId));
                     return (new UpdateColumnSuccess(resp));
+                })
+            )
+        )
+    );
+
+    @Effect()
+    removeColumn$: Observable<Action> = this.actions$.pipe(
+        ofType(ColumnTypes.REMOVE_COLUMNS),
+        mergeMap((action: any) =>
+            this.columnService.delete(action.payload).pipe(
+                map((resp: any) => {
+                    window.location.reload();
+                    return (new RemoveColumnSuccess(resp));
                 })
             )
         )

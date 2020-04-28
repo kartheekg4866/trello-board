@@ -37,9 +37,7 @@ export class ColumnService {
   }
 
   delete(column: Column) {
-    return this.http.delete(this.apiUrl + '/' + column._id)
-      .toPromise();
-
+    return this.http.delete(this.apiUrl + '/' + column._id).pipe(map((res: any) => res));
   }
 
 }

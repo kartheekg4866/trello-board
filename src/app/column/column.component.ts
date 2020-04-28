@@ -1,7 +1,7 @@
 import { Component, Input, Output, OnInit, EventEmitter, ElementRef } from '@angular/core';
 import { Column } from './column';
 import { Card } from '../card/card';
-import { AddCard, UpdateCard, UpdateColumn, GetColumns } from '../board/board.actions';
+import { AddCard, UpdateCard, UpdateColumn, GetColumns, RemoveColumn } from '../board/board.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from '../reducers';
 
@@ -150,7 +150,9 @@ export class ColumnComponent implements OnInit {
       this.clearAddColumn();
     }
   }
-
+  deleteColumn() {
+    this.store.dispatch(new RemoveColumn(this.column));
+  }
   clearAddColumn() {
     this.editingColumn = false;
   }

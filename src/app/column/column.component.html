@@ -1,4 +1,7 @@
 <div class="column" [attr.column-id]="column._id" [attr.column-order]="column.order">
+  <button type="button" class="close" style="margin-right: 0px;margin-top: 0px;" aria-label="Close"  (click)="deleteColumn()">
+    <span aria-hidden="true">&times;</span>
+  </button>
     <div class="column-header">
         <h4 [innerHtml]="currentTitle" id="edit-column-hr" [style.display]="editingColumn ?'none' : '' " (click)="editColumn()"></h4>
         <input [style.display]="editingColumn ?'' : 'none' " (blur)="updateColumnOnBlur()"
@@ -16,4 +19,5 @@
                 <app-card [card]="card"></app-card>
         </li>
     </ul>
+
 </div>
